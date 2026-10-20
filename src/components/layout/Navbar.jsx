@@ -9,20 +9,19 @@ import { useCart } from '../../context/CartContext';
 import useFetch from '../../lib/useFetch';
 import { BRAND } from '../../lib/brand';
 import { categoryIcon } from '../../lib/icons';
-import { Lotus } from '../decor';
 
-export function Logo({ light, compact }) {
+/** Brand logo from /public/brand. `light` = version for dark backgrounds, `compact` = emblem only. */
+export function Logo({ light, compact, className = '' }) {
+  const src = compact ? (light ? '/brand/emblem-light.png' : '/brand/emblem.png') : light ? '/brand/logo-light.png' : '/brand/logo.png';
   return (
-    <Link to="/" className="group flex items-center gap-2.5" aria-label={BRAND.name}>
-      <span className="grid size-10 place-items-center rounded-2xl bg-linear-to-br from-brand-500 to-brand-700 text-white shadow-md shadow-brand-600/30 transition-transform duration-500 group-hover:rotate-[-10deg] group-hover:scale-105">
-        <Lotus className="size-6" strokeWidth={2} />
-      </span>
-      {!compact && (
-        <span className="leading-none">
-          <span className={`block font-display text-xl font-bold tracking-tight ${light ? 'text-white' : 'text-slate-900'}`}>{BRAND.short}</span>
-          <span className={`mt-0.5 block text-[10px] font-bold uppercase tracking-[0.25em] ${light ? 'text-amber-300' : 'text-brand-600'}`}>{BRAND.sub}</span>
-        </span>
-      )}
+    <Link to="/" className={`group flex shrink-0 items-center ${className}`} aria-label={BRAND.name}>
+      <img
+        src={src}
+        alt={BRAND.name}
+        className={`w-auto transition-transform duration-500 group-hover:scale-[1.03] ${compact ? 'h-10' : 'h-11 sm:h-14'}`}
+        width={compact ? 33 : 137}
+        height={40}
+      />
     </Link>
   );
 }

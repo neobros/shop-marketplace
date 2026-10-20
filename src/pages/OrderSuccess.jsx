@@ -9,7 +9,7 @@ const confetti = Array.from({ length: 28 }, (_, i) => ({
   x: (Math.random() - 0.5) * 600,
   y: -200 - Math.random() * 250,
   r: Math.random() * 360,
-  c: ['#b04424', '#f59e0b', '#ec4899', '#f59e0b', '#10b981'][i % 5],
+  c: ['#155a3b', '#c48c22', '#23714d', '#e0bb61', '#0a2e1c'][i % 5],
   d: Math.random() * 0.3,
 }));
 

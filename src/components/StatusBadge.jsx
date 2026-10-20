@@ -9,7 +9,7 @@ export const STATUS_STYLES = {
 };
 
 export const STATUS_COLORS = {
-  pending: '#f59e0b',
+  pending: '#d4a53d',
   processing: '#0ea5e9',
   shipped: '#0d9488',
   delivered: '#10b981',

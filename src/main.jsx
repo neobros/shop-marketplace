@@ -17,7 +17,7 @@ createRoot(document.getElementById('root')).render(
             position="top-center"
             toastOptions={{
               className: '!rounded-xl !text-sm !font-medium !shadow-xl',
-              success: { iconTheme: { primary: '#b04424', secondary: '#fff' } },
+              success: { iconTheme: { primary: '#155a3b', secondary: '#fff' } },
             }}
           />
         </CartProvider>
