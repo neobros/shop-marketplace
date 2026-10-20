@@ -1,6 +1,6 @@
 # shop-marketplace
 
-**Handmade in Sri Lanka** is an online marketplace to buy and sell authentic Sri Lankan handmade products.
+**Ceylon Craft Collective** is an online marketplace to buy and sell authentic Sri Lankan handmade products.
 
 It is a multi-vendor marketplace for arts, crafts and handmade goods: home décor, crochet, clothing, jewellery, pottery, batik, coconut crafts, art, and tea & spices. It is built for Sri Lankan artisans and small creative businesses.
 
@@ -16,12 +16,12 @@ npm run build
 
 For production, set `VITE_API_URL=https://your-api.com/api` in `.env`.
 
-The brand name, contact details, bank details and delivery fees are all in `src/lib/brand.js`.
+The brand name, contact details, bank details and delivery fees are all in `src/lib/brand.js`. Logo files (full logo, emblem, light versions for dark backgrounds, favicons) are in `public/brand/`.
 
 ## Design
-- **Palette:** warm whites with terracotta clay, saffron and tea-leaf green. A four-colour stripe taken from the Sri Lankan flag is used as an accent.
+- **Palette:** taken from the logo — deep forest green and antique gold on warm whites. A four-colour stripe taken from the Sri Lankan flag is used as an accent.
 - **Type:** *Fraunces* serif headings with *Plus Jakarta Sans* body text.
-- **Motifs:** a lotus (nelum) logo, a subtle lotus pattern background, slowly rotating "liyawela" rings, and temple-arch image frames.
+- **Motifs:** the interwoven-leaf emblem, a subtle lotus (nelum) pattern background, slowly rotating "liyawela" rings, and temple-arch image frames.
 - **Animation:** hero slider with Ken Burns zoom and live progress, scroll reveals, a craft-name marquee, a deal-of-the-day countdown, animated counters and a scroll progress bar.
 
 ## Pages

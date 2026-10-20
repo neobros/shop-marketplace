@@ -32,8 +32,8 @@ export function StatCard({ label, value, format, change, icon: Icon, tint = 'bra
   const tints = {
     brand: 'from-brand-500 to-amber-500 shadow-brand-500/30',
     emerald: 'from-emerald-500 to-teal-500 shadow-emerald-500/30',
-    amber: 'from-amber-500 to-orange-500 shadow-amber-500/30',
-    rose: 'from-rose-500 to-pink-500 shadow-rose-500/30',
+    amber: 'from-amber-400 to-amber-600 shadow-amber-500/30',
+    rose: 'from-brand-700 to-brand-950 shadow-brand-900/30',
     sky: 'from-sky-500 to-cyan-500 shadow-sky-500/30',
   };
   const up = change >= 0;

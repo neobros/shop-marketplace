@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Logo } from './Navbar';
 import { BRAND } from '../../lib/brand';
-import { FlagStripe, Lotus } from '../decor';
+import { FlagStripe } from '../decor';
 
 const cols = [
   { title: 'Shop', links: [['All crafts', '/shop'], ['Batik', '/shop?category=batik'], ['Tea & spices', '/shop?category=tea-spices'], ['New arrivals', '/shop?isNew=true']] },
@@ -12,9 +12,9 @@ const cols = [
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 overflow-hidden bg-slate-950 text-slate-300">
+    <footer className="relative mt-24 overflow-hidden bg-brand-950 text-slate-300">
       <FlagStripe className="!h-1.5 rounded-none" />
-      <Lotus className="pointer-events-none absolute -right-16 -top-10 size-96 text-white/[0.03]" strokeWidth={0.6} />
+      <img src="/brand/emblem-light.png" alt="" aria-hidden="true" className="pointer-events-none absolute -right-10 -top-6 w-80 opacity-[0.05]" />
       <div className="container-x relative grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-5">
         <div className="lg:col-span-2">
           <Logo light />
@@ -43,7 +43,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} {BRAND.name}. Proudly made in Sri Lanka 🇱🇰</p>
           <div className="flex items-center gap-2">
             {['Cash on delivery', 'Bank transfer', 'VISA', 'Mastercard'].map((p) => (
-              <span key={p} className="rounded-md border border-white/10 px-2 py-1 text-[11px] font-bold text-slate-400">{p}</span>
+              <span key={p} className="rounded-md border border-white/15 px-2 py-1 text-[11px] font-bold text-slate-300">{p}</span>
             ))}
           </div>
         </div>

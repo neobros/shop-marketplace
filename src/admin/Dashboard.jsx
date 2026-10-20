@@ -127,15 +127,15 @@ export default function Dashboard() {
               <AreaChart data={series} margin={{ left: -10, right: 8, top: 5 }}>
                 <defs>
                   <linearGradient id="rev" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#b04424" stopOpacity={0.35} />
-                    <stop offset="100%" stopColor="#b04424" stopOpacity={0} />
+                    <stop offset="0%" stopColor="#155a3b" stopOpacity={0.35} />
+                    <stop offset="100%" stopColor="#155a3b" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="#f1f5f9" vertical={false} />
                 <XAxis dataKey="date" tickFormatter={(d) => date(d, { day: 'numeric', month: 'short' })} tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} minTickGap={24} />
                 <YAxis tickFormatter={shortMoney} tick={{ fontSize: 12, fill: '#94a3b8' }} axisLine={false} tickLine={false} />
-                <Tooltip content={<ChartTooltip />} cursor={{ stroke: '#f6c9b5', strokeDasharray: 4 }} />
-                <Area type="monotone" dataKey="revenue" stroke="#b04424" strokeWidth={2.5} fill="url(#rev)" animationDuration={1200} activeDot={{ r: 5, strokeWidth: 3, stroke: '#fff' }} />
+                <Tooltip content={<ChartTooltip />} cursor={{ stroke: '#abd2bc', strokeDasharray: 4 }} />
+                <Area type="monotone" dataKey="revenue" stroke="#155a3b" strokeWidth={2.5} fill="url(#rev)" animationDuration={1200} activeDot={{ r: 5, strokeWidth: 3, stroke: '#fff' }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -222,8 +222,8 @@ export default function Dashboard() {
               <BarChart data={salesByCategory} margin={{ left: -10 }}>
                 <defs>
                   <linearGradient id="bar" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#f59e0b" />
-                    <stop offset="100%" stopColor="#b04424" />
+                    <stop offset="0%" stopColor="#c48c22" />
+                    <stop offset="100%" stopColor="#155a3b" />
                   </linearGradient>
                 </defs>
                 <CartesianGrid stroke="#f1f5f9" vertical={false} />

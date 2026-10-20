@@ -1,24 +1,37 @@
 @import 'tailwindcss';
 
 /*
- * "Handmade in Sri Lanka" theme — warm whites, terracotta clay (brand), saffron (amber) and leaf green.
- * The slate scale is remapped to warm stone tones so every neutral in the UI feels earthy.
+ * "Ceylon Craft Collective" theme — taken from the logo: deep forest green (brand) and antique gold
+ * (the amber scale is remapped to gold), on warm whites. Slate is remapped to warm stone neutrals.
  */
 @theme {
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Fraunces', ui-serif, Georgia, serif;
 
-  /* terracotta / clay */
-  --color-brand-50: #fdf5f1;
-  --color-brand-100: #fbe6dc;
-  --color-brand-200: #f6c9b5;
-  --color-brand-300: #eea284;
-  --color-brand-400: #e17752;
-  --color-brand-500: #cc5833;
-  --color-brand-600: #b04424;
-  --color-brand-700: #8e351f;
-  --color-brand-800: #722d1e;
-  --color-brand-900: #5c271c;
+  /* forest green — logo #0a2e1c */
+  --color-brand-50: #eef6f1;
+  --color-brand-100: #d5e9dd;
+  --color-brand-200: #abd2bc;
+  --color-brand-300: #78b393;
+  --color-brand-400: #46906b;
+  --color-brand-500: #23714d;
+  --color-brand-600: #155a3b;
+  --color-brand-700: #0f4930;
+  --color-brand-800: #0c3a26;
+  --color-brand-900: #0a2e1c;
+  --color-brand-950: #061c11;
+
+  /* antique gold — logo #9a7028 / #c48c22 (used wherever the UI says "amber") */
+  --color-amber-50: #fbf7ea;
+  --color-amber-100: #f5eac8;
+  --color-amber-200: #ebd496;
+  --color-amber-300: #e0bb61;
+  --color-amber-400: #d4a53d;
+  --color-amber-500: #c48c22;
+  --color-amber-600: #a5731d;
+  --color-amber-700: #855b1b;
+  --color-amber-800: #6c4a1b;
+  --color-amber-900: #5a3e19;
 
   /* leaf green (tea country) */
   --color-leaf-50: #f0f7f1;
@@ -49,7 +62,7 @@
   --color-slate-950: #0f0d0c;
 
   --shadow-soft: 0 1px 2px rgb(41 37 36 / 0.04), 0 8px 24px -6px rgb(41 37 36 / 0.08);
-  --shadow-lift: 0 2px 4px rgb(41 37 36 / 0.04), 0 22px 40px -12px rgb(176 68 36 / 0.28);
+  --shadow-lift: 0 2px 4px rgb(41 37 36 / 0.04), 0 22px 40px -12px rgb(15 73 48 / 0.28);
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-float: float 6s ease-in-out infinite;
@@ -141,7 +154,7 @@
 
 /* Subtle repeating lotus / "liyawela" motif used on cream sections */
 @utility bg-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b04424' stroke-opacity='0.09' stroke-width='1.2'%3E%3Cpath d='M32 14c4 6 4 12 0 18-4-6-4-12 0-18z'/%3E%3Cpath d='M32 32c-6-2-10-6-12-12 6 1 10 5 12 12zM32 32c6-2 10-6 12-12-6 1-10 5-12 12z'/%3E%3Ccircle cx='32' cy='34' r='1.6'/%3E%3Cpath d='M0 50c8-6 16-6 24 0s16 6 24 0 12-4 16-2'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%230f4930' stroke-opacity='0.09' stroke-width='1.2'%3E%3Cpath d='M32 14c4 6 4 12 0 18-4-6-4-12 0-18z'/%3E%3Cpath d='M32 32c-6-2-10-6-12-12 6 1 10 5 12 12zM32 32c6-2 10-6 12-12-6 1-10 5-12 12z'/%3E%3Ccircle cx='32' cy='34' r='1.6'/%3E%3Cpath d='M0 50c8-6 16-6 24 0s16 6 24 0 12-4 16-2'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 /* Swiper pagination styling for hero */
@@ -150,7 +163,7 @@
 }
 .hero-swiper .swiper-pagination-bullet-active {
   width: 32px; border-radius: 999px; opacity: 1;
-  background: linear-gradient(90deg, #b04424, #f59e0b);
+  background: linear-gradient(90deg, #0f4930, #c48c22);
 }
 
 /* Hide scrollbar utility */
