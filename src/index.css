@@ -1,0 +1,162 @@
+@import 'tailwindcss';
+
+/*
+ * "Handmade in Sri Lanka" theme — warm whites, terracotta clay (brand), saffron (amber) and leaf green.
+ * The slate scale is remapped to warm stone tones so every neutral in the UI feels earthy.
+ */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', ui-serif, Georgia, serif;
+
+  /* terracotta / clay */
+  --color-brand-50: #fdf5f1;
+  --color-brand-100: #fbe6dc;
+  --color-brand-200: #f6c9b5;
+  --color-brand-300: #eea284;
+  --color-brand-400: #e17752;
+  --color-brand-500: #cc5833;
+  --color-brand-600: #b04424;
+  --color-brand-700: #8e351f;
+  --color-brand-800: #722d1e;
+  --color-brand-900: #5c271c;
+
+  /* leaf green (tea country) */
+  --color-leaf-50: #f0f7f1;
+  --color-leaf-100: #dceddf;
+  --color-leaf-200: #b9dbc0;
+  --color-leaf-300: #8cc199;
+  --color-leaf-400: #5ea170;
+  --color-leaf-500: #3f8453;
+  --color-leaf-600: #2f6a41;
+  --color-leaf-700: #275537;
+  --color-leaf-800: #22442e;
+  --color-leaf-900: #1d3827;
+
+  --color-cream: #fbf6ee;
+  --color-sand: #f4ead9;
+
+  /* warm neutrals (stone) under the slate name */
+  --color-slate-50: #fafaf9;
+  --color-slate-100: #f5f5f4;
+  --color-slate-200: #e7e5e4;
+  --color-slate-300: #d6d3d1;
+  --color-slate-400: #a8a29e;
+  --color-slate-500: #78716c;
+  --color-slate-600: #57534e;
+  --color-slate-700: #44403c;
+  --color-slate-800: #292524;
+  --color-slate-900: #1c1917;
+  --color-slate-950: #0f0d0c;
+
+  --shadow-soft: 0 1px 2px rgb(41 37 36 / 0.04), 0 8px 24px -6px rgb(41 37 36 / 0.08);
+  --shadow-lift: 0 2px 4px rgb(41 37 36 / 0.04), 0 22px 40px -12px rgb(176 68 36 / 0.28);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-blob: blob 14s ease-in-out infinite;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-gradient: gradient 8s ease infinite;
+  --animate-spin-slow: spin 60s linear infinite;
+  --animate-sway: sway 5s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.1); }
+    66% { transform: translate(-25px, 20px) scale(0.92); }
+  }
+  @keyframes shimmer {
+    from { background-position: -400px 0; }
+    to { background-position: 400px 0; }
+  }
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-white text-slate-800 antialiased;
+  }
+  h1, h2 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+  ::selection { @apply bg-brand-100 text-brand-800; }
+}
+
+@utility container-x { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+@utility font-display { font-family: var(--font-display); }
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold
+    transition-all duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60;
+}
+@utility btn-primary {
+  @apply btn bg-slate-900 text-white hover:bg-brand-600 hover:shadow-lift;
+}
+@utility btn-brand {
+  @apply btn bg-linear-to-r from-brand-600 to-brand-500 text-white shadow-md shadow-brand-500/25 hover:shadow-lift hover:brightness-110;
+}
+@utility btn-leaf {
+  @apply btn bg-leaf-600 text-white hover:bg-leaf-700;
+}
+@utility btn-outline {
+  @apply btn border border-slate-200 bg-white text-slate-700 hover:border-brand-300 hover:text-brand-600;
+}
+@utility btn-ghost { @apply btn text-slate-600 hover:bg-slate-100; }
+@utility btn-danger { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
+@utility input {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-800 outline-none
+    transition placeholder:text-slate-400 focus:border-brand-400 focus:ring-4 focus:ring-brand-100;
+}
+@utility label { @apply mb-1.5 block text-sm font-medium text-slate-700; }
+@utility card { @apply rounded-2xl border border-slate-100 bg-white shadow-soft; }
+@utility text-gradient {
+  @apply bg-linear-to-r from-brand-600 via-amber-500 to-brand-500 bg-clip-text text-transparent;
+  background-size: 200% auto;
+  animation: var(--animate-gradient);
+}
+@utility skeleton {
+  @apply rounded-lg bg-slate-100;
+  background-image: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.7), transparent);
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  animation: var(--animate-shimmer);
+}
+@utility badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+
+/* Subtle repeating lotus / "liyawela" motif used on cream sections */
+@utility bg-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%23b04424' stroke-opacity='0.09' stroke-width='1.2'%3E%3Cpath d='M32 14c4 6 4 12 0 18-4-6-4-12 0-18z'/%3E%3Cpath d='M32 32c-6-2-10-6-12-12 6 1 10 5 12 12zM32 32c6-2 10-6 12-12-6 1-10 5-12 12z'/%3E%3Ccircle cx='32' cy='34' r='1.6'/%3E%3Cpath d='M0 50c8-6 16-6 24 0s16 6 24 0 12-4 16-2'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Swiper pagination styling for hero */
+.hero-swiper .swiper-pagination-bullet {
+  width: 10px; height: 10px; background: #1c1917; opacity: 0.2; transition: all 0.3s;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+  width: 32px; border-radius: 999px; opacity: 1;
+  background: linear-gradient(90deg, #b04424, #f59e0b);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
