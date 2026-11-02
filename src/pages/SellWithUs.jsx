@@ -9,7 +9,7 @@ import { COMMISSION_RATE, DISTRICTS } from '../lib/brand';
 import { Reveal, SectionTitle, Spinner } from '../components/ui';
 import { FlagStripe, Lotus, Mandala } from '../components/decor';
 
-const CRAFTS = ['Batik', 'Handloom & clothing', 'Pottery & terracotta', 'Crochet & lace', 'Coconut shell crafts', 'Jewellery & gems', 'Masks & wood carving', 'Paintings & art', 'Tea & spices', 'Lacquer, brass & décor', 'Other handmade'];
+const CRAFTS = ['Batik', 'Handloom & clothing', 'Pottery & terracotta', 'Crochet & lace', 'Coconut shell crafts', 'Jewellery & gems', 'Masks & wood carving', 'Paintings & art', 'Tea & spices', 'Lacquer, brass & decor', 'Other handmade'];
 
 const STEPS = [
   { icon: ClipboardList, title: 'Apply', text: 'Tell us about your craft and workshop. It takes 3 minutes.' },
@@ -145,7 +145,7 @@ export default function SellWithUs() {
                   <label className="label">District *</label>
                   <select className="input" value={form.district} onChange={set('district')}>{DISTRICTS.map((d) => <option key={d}>{d}</option>)}</select>
                 </div>
-                <div><label className="label">Phone / WhatsApp *</label><input className="input" required value={form.phone} onChange={set('phone')} placeholder="07X XXX XXXX" /></div>
+                <div><label className="label">Phone / WhatsApp * <span className="font-normal text-slate-400">(only seen by our team)</span></label><input className="input" required value={form.phone} onChange={set('phone')} placeholder="07X XXX XXXX" /></div>
                 <div className="sm:col-span-2"><label className="label">Tagline</label><input className="input" value={form.tagline} onChange={set('tagline')} placeholder="Hand-waxed batik since 1987" /></div>
                 <div className="sm:col-span-2"><label className="label">Your story</label><textarea rows={4} className="input" value={form.bio} onChange={set('bio')} placeholder="Who you are, how you make your products, what makes them special…" /></div>
                 <div><label className="label">Logo image URL</label><input className="input" value={form.logo} onChange={set('logo')} placeholder="https://…" /></div>
