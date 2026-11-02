@@ -44,12 +44,12 @@ export default function ShopSettings() {
           <div><label className="label">Shop name</label><input className="input" required value={form.name} onChange={set('name')} /></div>
           <div><label className="label">Main craft</label><input className="input" value={form.craft} onChange={set('craft')} /></div>
           <div className="sm:col-span-2"><label className="label">Tagline</label><input className="input" value={form.tagline} onChange={set('tagline')} /></div>
-          <div className="sm:col-span-2"><label className="label">Your story</label><textarea rows={5} className="input" value={form.bio} onChange={set('bio')} /></div>
+          <div className="sm:col-span-2"><label className="label">Your story</label><textarea rows={5} className="input" value={form.bio} onChange={set('bio')} /><p className="mt-1 text-xs text-slate-400">Phone numbers, emails, links and social handles are hidden automatically — customers order through the marketplace.</p></div>
           <div>
             <label className="label">District</label>
             <select className="input" value={form.district} onChange={set('district')}>{DISTRICTS.map((d) => <option key={d}>{d}</option>)}</select>
           </div>
-          <div><label className="label">Phone / WhatsApp</label><input className="input" value={form.phone} onChange={set('phone')} /></div>
+          <div><label className="label">Phone / WhatsApp <span className="font-normal text-slate-400">(private — only our team sees it)</span></label><input className="input" value={form.phone} onChange={set('phone')} /></div>
           <div className="sm:col-span-2"><label className="label">Logo image URL</label><input className="input" value={form.logo} onChange={set('logo')} placeholder="https://…" /></div>
           <div className="sm:col-span-2"><label className="label">Cover image URL</label><input className="input" value={form.banner} onChange={set('banner')} placeholder="https://…" /></div>
           <div className="sm:col-span-2"><button disabled={saving} className="btn-leaf">{saving && <Spinner className="size-4" />} Save changes</button></div>
