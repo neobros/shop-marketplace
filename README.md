@@ -16,12 +16,12 @@ npm run build
 
 For production, set `VITE_API_URL=https://your-api.com/api` in `.env`.
 
-The brand name, contact details, bank details and delivery fees are all in `src/lib/brand.js`. Logo files (full logo, emblem, light versions for dark backgrounds, favicons) are in `public/brand/`.
+The brand name, contact details, bank details and delivery fees are all in `src/lib/brand.js`. Logo files are in `public/brand/`: `logo.png` (full ornamental logo), `logo-wide.png` (header version), `emblem.png` (centre flower), `-light` versions for dark backgrounds, and favicons.
 
 ## Design
-- **Palette:** taken from the logo — deep forest green and antique gold on warm whites. A four-colour stripe taken from the Sri Lankan flag is used as an accent.
+- **Palette:** deep forest green and antique gold on warm whites; the black-and-white ornamental logo has a cream version for dark backgrounds. A four-colour stripe taken from the Sri Lankan flag is used as an accent.
 - **Type:** *Fraunces* serif headings with *Plus Jakarta Sans* body text.
-- **Motifs:** the interwoven-leaf emblem, a subtle lotus (nelum) pattern background, slowly rotating "liyawela" rings, and temple-arch image frames.
+- **Motifs:** the ornamental scroll logo and its centre-flower emblem, a subtle lotus (nelum) pattern background, slowly rotating "liyawela" rings, and temple-arch image frames.
 - **Animation:** hero slider with Ken Burns zoom and live progress, scroll reveals, a craft-name marquee, a deal-of-the-day countdown, animated counters and a scroll progress bar.
 
 ## Pages

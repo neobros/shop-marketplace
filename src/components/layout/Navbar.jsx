@@ -10,17 +10,23 @@ import useFetch from '../../lib/useFetch';
 import { BRAND } from '../../lib/brand';
 import { categoryIcon } from '../../lib/icons';
 
-/** Brand logo from /public/brand. `light` = version for dark backgrounds, `compact` = emblem only. */
-export function Logo({ light, compact, className = '' }) {
-  const src = compact ? (light ? '/brand/emblem-light.png' : '/brand/emblem.png') : light ? '/brand/logo-light.png' : '/brand/logo.png';
+/**
+ * Brand logo from /public/brand.
+ * default = wide version (name between two rules) for headers,
+ * `full` = full ornamental logo, `compact` = centre flower emblem, `light` = cream version for dark backgrounds.
+ */
+export function Logo({ light, compact, full, size: sizeOverride, className = '' }) {
+  const file = compact ? 'emblem' : full ? 'logo' : 'logo-wide';
+  const size = sizeOverride || (compact ? 'h-9' : full ? 'h-24' : 'h-9 sm:h-11');
+  const ratio = compact ? 92 / 70 : full ? 448 / 261 : 448 / 129;
   return (
     <Link to="/" className={`group flex shrink-0 items-center ${className}`} aria-label={BRAND.name}>
       <img
-        src={src}
+        src={`/brand/${file}${light ? '-light' : ''}.png`}
         alt={BRAND.name}
-        className={`w-auto transition-transform duration-500 group-hover:scale-[1.03] ${compact ? 'h-10' : 'h-11 sm:h-14'}`}
-        width={compact ? 33 : 137}
-        height={40}
+        className={`w-auto transition-transform duration-500 group-hover:scale-[1.03] ${size}`}
+        width={Math.round(44 * ratio)}
+        height={44}
       />
     </Link>
   );
@@ -76,12 +82,12 @@ export default function Navbar() {
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'border-b border-slate-100 bg-white/85 shadow-soft backdrop-blur-xl' : 'bg-white'}`}>
-      <div className="container-x flex h-16 items-center justify-between gap-4 lg:h-20">
+      <div className="container-x flex h-[76px] items-center justify-between gap-4 lg:h-24">
         <div className="flex items-center gap-3">
           <button className="rounded-lg p-2 hover:bg-slate-100 lg:hidden" onClick={() => setMobile(true)} aria-label="Menu">
             <Menu className="size-5" />
           </button>
-          <Logo />
+          <Logo full size="h-[60px] lg:h-20" />
         </div>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -234,7 +240,7 @@ export default function Navbar() {
               transition={{ type: 'spring', damping: 30, stiffness: 300 }}
             >
               <div className="mb-6 flex items-center justify-between">
-                <Logo />
+                <Logo full size="h-16" />
                 <button onClick={() => setMobile(false)} className="rounded-lg p-2 hover:bg-slate-100"><X className="size-5" /></button>
               </div>
               <nav className="flex flex-col gap-1">

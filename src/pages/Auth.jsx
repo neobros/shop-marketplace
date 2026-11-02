@@ -20,7 +20,7 @@ function AuthShell({ title, subtitle, children, footer }) {
         <div className="absolute inset-0 bg-linear-to-br from-brand-900/85 via-slate-950/50 to-leaf-900/70" />
         <div className="pointer-events-none absolute -left-10 top-20 size-80 animate-blob rounded-full bg-brand-500/40 blur-3xl" />
         <div className="relative flex h-full flex-col justify-between p-12 text-white">
-          <Logo light />
+          <Logo light full />
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
             <h2 className="max-w-md text-5xl font-semibold leading-tight">Ayubowan! Discover the island’s finest handmade crafts.</h2>
             <p className="mt-4 max-w-sm text-white/70">Batik, pottery, masks, tea and more — straight from the artisans who make them.</p>

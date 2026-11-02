@@ -2,11 +2,13 @@
 export const BRAND = {
   name: 'Ceylon Craft Collective',
   tagline: 'An online marketplace to buy and sell authentic Sri Lankan handmade products.',
-  email: 'hello@ceyloncraftcollective.lk',
-  phone: '+94 77 123 4567',
-  whatsapp: '+94 77 123 4567',
-  address: 'No. 25, Flower Road, Colombo 07',
-  bank: { name: 'Bank of Ceylon', account: '0012 3456 7890', holder: 'Ceylon Craft Collective (Pvt) Ltd', branch: 'Colombo 07' },
+  email: 'ceyloncraftcollectiveventures@gmail.com',
+  phone: '077 377 3478',
+  phoneLink: '+94773773478',
+  whatsapp: '077 377 3478',
+  address: '103/2, Sudarshi Road, Kalubowila, Colombo',
+  // TODO: replace with the real bank account before accepting bank transfers
+  bank: { name: 'Bank of Ceylon', account: '0012 3456 7890', holder: 'Ceylon Craft Collective', branch: 'Colombo 07' },
 };
 
 // Keep in sync with shop-marketplace-backend/src/config/shop.js
