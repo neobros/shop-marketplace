@@ -14,7 +14,7 @@ export const BRAND = {
 // Keep in sync with shop-marketplace-backend/src/config/shop.js
 export const FREE_SHIPPING_OVER = 15000;
 export const SHIPPING_FLAT = 450;
-export const COMMISSION_RATE = 0.1;
+export const COMMISSION_RATE = 0.15;
 
 export const DISTRICTS = [
   'Ampara', 'Anuradhapura', 'Badulla', 'Batticaloa', 'Colombo', 'Galle', 'Gampaha', 'Hambantota',
