@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { CalendarDays, MapPin, Package, Phone, Search, Star, Store, Users } from 'lucide-react';
+import { CalendarDays, MapPin, Package, Search, Star, Store, Users } from 'lucide-react';
 import useFetch from '../lib/useFetch';
 import { date } from '../lib/format';
 import { EmptyState, Img, PageLoader } from '../components/ui';
@@ -116,7 +116,6 @@ export function ArtisanShop() {
               <li className="flex items-center gap-2"><MapPin className="size-4 text-brand-500" /> {s.district}, Sri Lanka</li>
               <li className="flex items-center gap-2"><Lotus className="size-4 text-brand-500" /> {s.craft}</li>
               {s.memberSince && <li className="flex items-center gap-2"><CalendarDays className="size-4 text-brand-500" /> Member since {date(s.memberSince, { month: 'long', year: 'numeric' })}</li>}
-              {s.phone && <li className="flex items-center gap-2"><Phone className="size-4 text-brand-500" /> {s.phone}</li>}
             </ul>
           </div>
           <div className="grid grid-cols-3 gap-3 text-center">
