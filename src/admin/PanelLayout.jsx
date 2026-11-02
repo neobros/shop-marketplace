@@ -24,8 +24,8 @@ export default function PanelLayout({ nav, title, roleLabel, accent = 'brand', b
   const sidebar = (isCollapsed) => (
     <div className="relative flex h-full flex-col overflow-hidden bg-brand-950 p-4">
       <Lotus className="pointer-events-none absolute -bottom-10 -left-10 size-56 text-white/[0.03]" strokeWidth={0.8} />
-      <div className={`mb-6 flex items-center ${isCollapsed ? 'justify-center' : ''} px-1 pt-1`}>
-        <Logo light compact={isCollapsed} />
+      <div className="mb-6 flex items-center justify-center px-1 pt-1">
+        {isCollapsed ? <Logo light compact size="h-10" /> : <Logo light full size="h-24" />}
       </div>
       {!isCollapsed && (
         <div className="mb-5 rounded-2xl bg-white/5 px-3 py-2.5">
