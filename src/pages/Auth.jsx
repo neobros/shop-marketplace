@@ -7,6 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { errMsg } from '../lib/api';
 import { Spinner } from '../components/ui';
 import { Logo } from '../components/layout/Navbar';
+import GoogleButton, { OrDivider, googleOnly } from '../components/GoogleButton';
 
 function AuthShell({ title, subtitle, children, footer }) {
   return (
@@ -69,6 +70,8 @@ export function Login() {
   const location = useLocation();
   const [form, setForm] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
+  // Google-only mode hides the email form; staff/admin can open it (or go straight to /login?staff)
+  const [showEmail, setShowEmail] = useState(() => !googleOnly || new URLSearchParams(location.search).has('staff'));
 
   if (user) return <Navigate to={location.state?.from || (user.role === 'admin' ? '/admin' : '/')} replace />;
 
@@ -92,17 +95,30 @@ export function Login() {
       subtitle="Sign in to your account to continue."
       footer={<>Don't have an account? <Link to="/register" state={location.state} className="font-semibold text-brand-600">Create one</Link></>}
     >
-      <form onSubmit={submit} className="space-y-4">
-        <div>
-          <label className="label">Email</label>
-          <IconInput icon={Mail} type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@example.com" />
-        </div>
-        <div>
-          <label className="label">Password</label>
-          <IconInput icon={Lock} type="password" required value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="••••••••" />
-        </div>
-        <button disabled={loading} className="btn-brand w-full !py-3.5">{loading && <Spinner className="size-4" />} Sign in</button>
-      </form>
+      <GoogleButton
+        text="continue_with"
+        onSuccess={(u, created) => toast.success(created ? `Welcome, ${u.name.split(' ')[0]}! Your account is ready.` : `Welcome back, ${u.name.split(' ')[0]}!`)}
+      />
+      {!showEmail ? (
+        <button type="button" onClick={() => setShowEmail(true)} className="mx-auto mt-8 block text-xs font-medium text-slate-400 underline-offset-4 hover:text-brand-600 hover:underline">
+          Staff / admin? Sign in with email
+        </button>
+      ) : (
+        <>
+          <OrDivider label={googleOnly ? 'staff / admin sign in' : 'or sign in with email'} />
+          <form onSubmit={submit} className="space-y-4">
+            <div>
+              <label className="label">Email</label>
+              <IconInput icon={Mail} type="email" required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@example.com" />
+            </div>
+            <div>
+              <label className="label">Password</label>
+              <IconInput icon={Lock} type="password" required value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="••••••••" />
+            </div>
+            <button disabled={loading} className="btn-brand w-full !py-3.5">{loading && <Spinner className="size-4" />} Sign in</button>
+          </form>
+        </>
+      )}
     </AuthShell>
   );
 }
@@ -139,6 +155,18 @@ export function Register() {
       subtitle="Shop authentic Sri Lankan crafts — or open your own artisan shop later."
       footer={<>Already have an account? <Link to="/login" state={location.state} className="font-semibold text-brand-600">Sign in</Link></>}
     >
+      <GoogleButton
+        text="signup_with"
+        onSuccess={(u, created) => toast.success(created ? `Welcome, ${u.name.split(' ')[0]}! Your account is ready.` : `Welcome back, ${u.name.split(' ')[0]}!`)}
+      />
+      {googleOnly ? (
+        <p className="mt-5 text-center text-xs leading-relaxed text-slate-400">
+          We use Google sign-in to keep every account verified and secure.
+          <br />No new password to remember.
+        </p>
+      ) : (
+      <>
+      <OrDivider label="or sign up with email" />
       <form onSubmit={submit} className="space-y-4">
         <div>
           <label className="label">Full name</label>
@@ -160,6 +188,8 @@ export function Register() {
         </div>
         <button disabled={loading} className="btn-brand w-full !py-3.5">{loading && <Spinner className="size-4" />} Create account</button>
       </form>
+      </>
+      )}
     </AuthShell>
   );
 }
