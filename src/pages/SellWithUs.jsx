@@ -8,6 +8,7 @@ import api, { errMsg } from '../lib/api';
 import { COMMISSION_RATE, DISTRICTS } from '../lib/brand';
 import { Reveal, SectionTitle, Spinner } from '../components/ui';
 import { FlagStripe, Lotus, Mandala } from '../components/decor';
+import GoogleButton, { OrDivider, googleEnabled, googleOnly } from '../components/GoogleButton';
 
 const CRAFTS = ['Batik', 'Handloom & clothing', 'Pottery & terracotta', 'Crochet & lace', 'Coconut shell crafts', 'Jewellery & gems', 'Masks & wood carving', 'Paintings & art', 'Tea & spices', 'Lacquer, brass & decor', 'Other handmade'];
 
@@ -31,6 +32,7 @@ export default function SellWithUs() {
 
   const submit = async (e) => {
     e.preventDefault();
+    if (!user && googleOnly) return toast.error('Please continue with Google first (step 1).');
     setSaving(true);
     try {
       if (!user) await register({ name: form.accName, email: form.email, password: form.password });
@@ -129,9 +131,19 @@ export default function SellWithUs() {
               {!user && (
                 <fieldset className="grid gap-4 rounded-2xl bg-cream p-4 sm:grid-cols-3">
                   <legend className="px-1 text-sm font-bold text-slate-700">1. Your account <Link to="/login" state={{ from: '/sell' }} className="ml-2 font-medium text-brand-600">Already registered? Sign in</Link></legend>
-                  <div><label className="label">Your name</label><input className="input" required value={form.accName} onChange={set('accName')} /></div>
-                  <div><label className="label">Email</label><input type="email" className="input" required value={form.email} onChange={set('email')} /></div>
-                  <div><label className="label">Password</label><input type="password" minLength={6} className="input" required value={form.password} onChange={set('password')} /></div>
+                  {googleEnabled && (
+                    <div className="sm:col-span-3">
+                      <GoogleButton text="signup_with" onSuccess={(u) => toast.success(`Signed in as ${u.email} — now add your shop details below.`)} />
+                      {!googleOnly && <OrDivider label="or create an account with email" />}
+                    </div>
+                  )}
+                  {!googleOnly && (
+                    <>
+                      <div><label className="label">Your name</label><input className="input" required value={form.accName} onChange={set('accName')} /></div>
+                      <div><label className="label">Email</label><input type="email" className="input" required value={form.email} onChange={set('email')} /></div>
+                      <div><label className="label">Password</label><input type="password" minLength={6} className="input" required value={form.password} onChange={set('password')} /></div>
+                    </>
+                  )}
                 </fieldset>
               )}
               <div className="grid gap-4 sm:grid-cols-2">
