@@ -16,6 +16,10 @@ npm run build
 
 For production, set `VITE_API_URL=https://your-api.com/api` in `.env`.
 
+**Google sign-in:** set `VITE_GOOGLE_CLIENT_ID` to your Google OAuth Web Client ID. It must match `GOOGLE_CLIENT_ID` in the backend; setup steps are in the backend README. When it's empty, the "Continue with Google" button is hidden.
+
+**Google-only mode:** set `VITE_GOOGLE_ONLY=true` to hide the email/password forms, so customers and artisans can only use Google. Staff and admins can still use the small "Staff / admin? Sign in with email" link on the login page, or go straight to `/login?staff`. Set `GOOGLE_ONLY=true` in the backend as well, so email sign-ups are also refused by the API. This has no effect while `VITE_GOOGLE_CLIENT_ID` is empty. Restart `npm run dev` after changing either value.
+
 The brand name, contact details, bank details and delivery fees are all in `src/lib/brand.js`. Logo files are in `public/brand/`: `logo.png` (full ornamental logo), `logo-wide.png` (header version), `emblem.png` (centre flower), `-light` versions for dark backgrounds, and favicons.
 
 ## Design
