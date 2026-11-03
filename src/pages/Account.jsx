@@ -55,7 +55,7 @@ export function AccountLayout() {
 }
 
 export function Profile() {
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, setUser } = useAuth();
   const [form, setForm] = useState({
     name: user.name,
     phone: user.phone || '',
@@ -86,8 +86,9 @@ export function Profile() {
     setSaving('pw');
     try {
       await api.put('/auth/me/password', pw);
-      toast.success('Password changed');
+      toast.success(user.hasPassword ? 'Password changed' : 'Password set — you can now also sign in with your email');
       setPw({ currentPassword: '', newPassword: '' });
+      setUser((u) => ({ ...u, hasPassword: true }));
     } catch (err) {
       toast.error(errMsg(err));
     } finally {
@@ -110,12 +111,19 @@ export function Profile() {
         <button disabled={saving === 'profile'} className="btn-primary mt-6">{saving === 'profile' && <Spinner className="size-4" />} Save changes</button>
       </form>
       <form onSubmit={changePw} className="card p-6">
-        <h3 className="mb-5 text-lg font-bold">Change password</h3>
+        <h3 className="text-lg font-bold">{user.hasPassword ? 'Change password' : 'Set a password'}</h3>
+        <p className="mb-5 mt-1 text-sm text-slate-500">
+          {user.hasPassword
+            ? user.googleLinked && 'You can also sign in with Google.'
+            : 'You signed up with Google. Set a password if you also want to sign in with your email.'}
+        </p>
         <div className="grid gap-4 sm:grid-cols-2">
-          <div><label className="label">Current password</label><input type="password" className="input" value={pw.currentPassword} onChange={(e) => setPw({ ...pw, currentPassword: e.target.value })} required /></div>
+          {user.hasPassword && (
+            <div><label className="label">Current password</label><input type="password" className="input" value={pw.currentPassword} onChange={(e) => setPw({ ...pw, currentPassword: e.target.value })} required /></div>
+          )}
           <div><label className="label">New password</label><input type="password" minLength={6} className="input" value={pw.newPassword} onChange={(e) => setPw({ ...pw, newPassword: e.target.value })} required /></div>
         </div>
-        <button disabled={saving === 'pw'} className="btn-outline mt-6">{saving === 'pw' && <Spinner className="size-4" />} Update password</button>
+        <button disabled={saving === 'pw'} className="btn-outline mt-6">{saving === 'pw' && <Spinner className="size-4" />} {user.hasPassword ? 'Update password' : 'Set password'}</button>
       </form>
     </div>
   );

@@ -35,6 +35,11 @@ export function AuthProvider({ children }) {
 
   const login = async (email, password) => handleAuth((await api.post('/auth/login', { email, password })).data);
   const register = async (payload) => handleAuth((await api.post('/auth/register', payload)).data);
+  // Google sign-in / sign-up: send Google's ID token, get our own JWT back
+  const loginWithGoogle = async (credential) => {
+    const { data } = await api.post('/auth/google', { credential });
+    return { user: handleAuth(data), created: !!data.created };
+  };
 
   const logout = () => {
     localStorage.removeItem(TOKEN_KEY);
@@ -61,6 +66,7 @@ export function AuthProvider({ children }) {
     setUser,
     login,
     register,
+    loginWithGoogle,
     logout,
     updateProfile,
     toggleWishlist,
